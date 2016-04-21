@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		21A1A7D61CC89B5E0030BED4 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A1A7D51CC89B5E0030BED4 /* SettingsViewController.swift */; };
 		21ACCA471CC6D7F700326F51 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21ACCA461CC6D7F700326F51 /* AppDelegate.swift */; };
 		21ACCA491CC6D7F700326F51 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21ACCA481CC6D7F700326F51 /* ViewController.swift */; };
 		21ACCA4C1CC6D7F700326F51 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21ACCA4A1CC6D7F700326F51 /* Main.storyboard */; };
@@ -34,6 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		21A1A7D51CC89B5E0030BED4 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		21ACCA431CC6D7F600326F51 /* Tips.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tips.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		21ACCA461CC6D7F700326F51 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		21ACCA481CC6D7F700326F51 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -97,6 +99,7 @@
 		21ACCA451CC6D7F700326F51 /* Tips */ = {
 			isa = PBXGroup;
 			children = (
+				21A1A7D51CC89B5E0030BED4 /* SettingsViewController.swift */,
 				21ACCA461CC6D7F700326F51 /* AppDelegate.swift */,
 				21ACCA481CC6D7F700326F51 /* ViewController.swift */,
 				21ACCA4A1CC6D7F700326F51 /* Main.storyboard */,
@@ -261,6 +264,7 @@
 			files = (
 				21ACCA491CC6D7F700326F51 /* ViewController.swift in Sources */,
 				21ACCA471CC6D7F700326F51 /* AppDelegate.swift in Sources */,
+				21A1A7D61CC89B5E0030BED4 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -485,6 +489,7 @@
 				21ACCA6D1CC6D7F700326F51 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		21ACCA6E1CC6D7F700326F51 /* Build configuration list for PBXNativeTarget "TipsTests" */ = {
 			isa = XCConfigurationList;
@@ -493,6 +498,7 @@
 				21ACCA701CC6D7F700326F51 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		21ACCA711CC6D7F700326F51 /* Build configuration list for PBXNativeTarget "TipsUITests" */ = {
 			isa = XCConfigurationList;
@@ -501,6 +507,7 @@
 				21ACCA731CC6D7F700326F51 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
