@@ -75,10 +75,10 @@
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <navigationBar contentMode="scaleToFill" id="CRH-qz-EWU">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="19" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
-                                    <navigationItem title="Tip Calculator" id="RlL-wu-BDa">
+                                    <navigationItem title="Tip Y'all" id="RlL-wu-BDa">
                                         <barButtonItem key="rightBarButtonItem" title="Settings" id="vR1-q6-phR" userLabel="Settings">
                                             <connections>
                                                 <segue destination="pJe-Kd-BFW" kind="modal" id="HJn-Ye-XZp"/>
