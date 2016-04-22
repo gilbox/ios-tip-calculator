@@ -19,14 +19,31 @@ class GameViewController: UIViewController {
     
     var currentQuestionIndex = 0
     var score = 0
+    var questionLabelCenter: CGPoint = CGPoint()
+    var button0Center: CGPoint = CGPoint()
+    var button1Center: CGPoint = CGPoint()
+    var button2Center: CGPoint = CGPoint()
+    var button3Center: CGPoint = CGPoint()
     
     @IBOutlet weak var questionLabel: UILabel!
-
-    @IBOutlet weak var button0: UIButton! // horrible
-    @IBOutlet weak var button1: UIButton! // bad
-    @IBOutlet weak var button2: UIButton! // good
-    @IBOutlet weak var button3: UIButton! // amazing
     
+    @IBOutlet weak var button0: UIButton! // horrible (bottom-right)
+    @IBOutlet weak var button1: UIButton! // bad (bottom-left)
+    @IBOutlet weak var button2: UIButton! // good (top-right)
+    @IBOutlet weak var button3: UIButton! // amazing (top-left)
+    
+    @IBOutlet var gameView: UIView!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view, typically from a nib.
+        questionLabelCenter = questionLabel.center
+        button0Center = button0.center
+        button1Center = button1.center
+        button2Center = button2.center
+        button3Center = button3.center
+    }
+
     override func viewDidAppear(animated: Bool) {
         renderQuestionLabel()
     }
@@ -46,7 +63,60 @@ class GameViewController: UIViewController {
             return
         }
         
-        renderQuestionLabel()
+        UIView.animateWithDuration(0.4, animations: {
+            self.questionLabel.center = CGPoint(
+                x: self.view.frame.size.width + self.questionLabel.frame.size.width/2,
+                y: self.questionLabelCenter.y)
+        }, completion: { _ in
+            self.renderQuestionLabel()
+            self.questionLabel.center = CGPoint(
+                x: self.questionLabel.frame.size.width / -2,
+                y: self.questionLabelCenter.y)
+            UIView.animateWithDuration(0.4, animations: {
+                self.questionLabel.center = self.questionLabelCenter
+            })
+        })
+        
+        if (sender != button0) {
+            animateButtonRight(button0, originalCenter: button0Center, duration: 0.2) }
+        if (sender != button1) {
+            animateButtonLeft(button1, originalCenter: button1Center, duration: 0.25) }
+        if (sender != button2) {
+            animateButtonRight(button2, originalCenter: button2Center, duration: 0.3) }
+        if (sender != button3) {
+            animateButtonLeft(button3, originalCenter: button3Center, duration: 0.35) }
+    }
+    
+    func animateButtonLeft(button: UIButton, originalCenter: CGPoint, duration: Double) {
+        UIView.animateWithDuration(duration, animations: {
+            button.center = CGPoint(
+                x: button.frame.size.width / -2,
+                y: originalCenter.y)
+        }, completion: { _ in
+            button.center = originalCenter
+            button.alpha = 0
+            button.transform = CGAffineTransformMakeScale(0.1, 0.1)
+            UIView.animateWithDuration(duration, animations: {
+                button.alpha = 1
+                button.transform = CGAffineTransformMakeScale(1.0, 1.0)
+            })
+        })
+    }
+    
+    func animateButtonRight(button: UIButton, originalCenter: CGPoint, duration: Double) {
+        UIView.animateWithDuration(duration, animations: {
+            button.center = CGPoint(
+                x: self.view.frame.size.width + button.frame.size.width / 2,
+                y: originalCenter.y)
+        }, completion: { _ in
+            button.center = originalCenter
+            button.alpha = 0
+            button.transform = CGAffineTransformMakeScale(0.1, 0.1)
+            UIView.animateWithDuration(duration, animations: {
+                button.alpha = 1
+                button.transform = CGAffineTransformMakeScale(1.0, 1.0)
+            })
+        })
     }
     
     func close() {

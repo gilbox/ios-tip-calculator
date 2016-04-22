@@ -213,12 +213,13 @@
                         <outlet property="button1" destination="6kY-Lg-Uxc" id="HFI-5b-fzJ"/>
                         <outlet property="button2" destination="CWw-zb-SSN" id="3Mw-bd-WuI"/>
                         <outlet property="button3" destination="d2F-1C-ofe" id="8uV-H5-JdB"/>
+                        <outlet property="gameView" destination="59Q-Ef-C9K" id="vBf-ul-wg3"/>
                         <outlet property="questionLabel" destination="6jP-Sl-yNi" id="45k-W8-kQe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="StM-5x-MBS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="218" y="1030"/>
+            <point key="canvasLocation" x="218" y="1035"/>
         </scene>
         <!--Settings View Controller-->
         <scene sceneID="o3O-iR-77T">
