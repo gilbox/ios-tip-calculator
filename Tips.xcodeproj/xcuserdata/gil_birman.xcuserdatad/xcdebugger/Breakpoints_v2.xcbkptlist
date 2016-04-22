@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Tips/SettingsViewController.swift"
-            timestampString = "482980497.746136"
+            timestampString = "482980798.111477"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "57"
-            endingLineNumber = "57"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
             landmarkName = "getLabelForSlider(_:)"
             landmarkType = "5">
          </BreakpointContent>

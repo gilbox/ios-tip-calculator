@@ -33,7 +33,6 @@ class SettingsViewController: UIViewController {
         setValueForSlider(tipPercentages[2], slider: percentSlider2)
     }
     
-
     @IBAction func onSliderValueChanged(sender: UISlider) {
         let label = getLabelForSlider(sender)
         setValueForLabel(Double(sender.value), label: label)

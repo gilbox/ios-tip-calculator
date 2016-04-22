@@ -30,3 +30,5 @@ let TIP_PERCENTAGES = "TIP_PERCENTAGES"
 let DEFAULT_TIP_PERCENTAGES = [0.18, 0.2, 0.22]
 let PercentFormatter = createFormatter(.PercentStyle)
 let CurrencyFormatter = createFormatter(.CurrencyStyle)
+let DecimalFormatter = createFormatter(.DecimalStyle)
+
