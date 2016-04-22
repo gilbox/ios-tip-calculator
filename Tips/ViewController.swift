@@ -57,11 +57,6 @@ class ViewController: UIViewController {
         }
     }
     
-    func getTipPercentages()-> [Double] {
-        let defaults = NSUserDefaults.standardUserDefaults()
-        return defaults.arrayForKey(TIP_PERCENTAGES) as! [Double]
-    }
-    
     func renderBillAmount() {
         let billAmount = NSString(string: billField.text!).doubleValue
         let tipPercentages = getTipPercentages()
@@ -75,7 +70,7 @@ class ViewController: UIViewController {
     
     func renderTipPercentages() {
         for (index, percent) in getTipPercentages().enumerate() {
-            let pct = percentFormatter.stringFromNumber(percent)
+            let pct = PercentFormatter.stringFromNumber(percent)
             tipControl.setTitle(pct, forSegmentAtIndex: index)
         }
     }

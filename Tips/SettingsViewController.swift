@@ -26,8 +26,7 @@ class SettingsViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         
-        let defaults = NSUserDefaults.standardUserDefaults()
-        var tipPercentages = defaults.arrayForKey(TIP_PERCENTAGES) as! [Double]
+        var tipPercentages = getTipPercentages()
     
         setValueForSlider(tipPercentages[0], slider: percentSlider0)
         setValueForSlider(tipPercentages[1], slider: percentSlider1)
@@ -39,10 +38,7 @@ class SettingsViewController: UIViewController {
         let label = getLabelForSlider(sender)
         setValueForLabel(Double(sender.value), label: label)
         
-        
-        let defaults = NSUserDefaults.standardUserDefaults()
-        defaults.setObject(getTipPercentages(), forKey: TIP_PERCENTAGES)
-        defaults.synchronize()
+        setTipPercentages(getNewTipPercentages())
     }
     
     func normalizePercentage(value: Double)-> Double {
@@ -50,7 +46,7 @@ class SettingsViewController: UIViewController {
         return (round(value*100.0))/100.0
     }
     
-    func getTipPercentages()-> Array<Double> {
+    func getNewTipPercentages()-> Array<Double> {
         return [
             normalizePercentage(Double(percentSlider0.value)),
             normalizePercentage(Double(percentSlider1.value)),
@@ -68,7 +64,7 @@ class SettingsViewController: UIViewController {
     }
     
     func setValueForLabel(value: Double, label: UILabel) {
-        label.text = percentFormatter.stringFromNumber(value)
+        label.text = PercentFormatter.stringFromNumber(value)
     }
     
     func setValueForSlider(value: Double, slider: UISlider) {
