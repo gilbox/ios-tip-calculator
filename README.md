@@ -33,8 +33,15 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
 
-The code is a lot more verbose than I am used to when writing JavaScript.
+- The code is a lot more verbose than I am used to when writing JavaScript.
 Part of this is probably because I don't understand a lot of best-practices.
+
+- I put commonly-used functions and constants in `common.swift`. Coming from the JavaScript
+modulified world I hate using globals but am not sure the best way to do this sort of thing
+in Swift.
+
+- I'm reading and writing to and from `NSUserDefaults` all the time to avoid any data
+sync problems. Is there any problem with doing this?
 
 
 ## License

@@ -1,12 +1,11 @@
 //
-//  constants.swift
+//  common.swift
 //  Tips
 //
 //  Created by Gil Birman on 4/21/16.
 //  Copyright © 2016 Gil Birman. All rights reserved.
 //
 
-//import Foundation
 import UIKit
 
 func getTipPercentages()-> [Double] {
