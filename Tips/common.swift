@@ -19,13 +19,35 @@ func setTipPercentages(value: [Double]) {
     defaults.synchronize()
 }
 
+
+func getCustomTipPercent()-> Double? {
+    let defaults = NSUserDefaults.standardUserDefaults()
+    let value = defaults.doubleForKey(CUSTOM_PERCENT)
+    return value < 0 ? nil : value
+}
+
+func setCustomTipPercent(value: Double?) {
+    print("set!!! \(value)")
+    let defaults = NSUserDefaults.standardUserDefaults()
+    
+    // for some reason it won't let me save nil as the value ʕ ಡ ﹏ ಡ ʔ ... so I use negative number instead
+    defaults.setObject(value == nil ? -1 : value, forKey: CUSTOM_PERCENT)
+    defaults.synchronize()
+}
+
 func createFormatter(style: NSNumberFormatterStyle)-> NSNumberFormatter {
     let f = NSNumberFormatter()
     f.numberStyle = style
     return f
 }
 
+func normalizePercentage(value: Double)-> Double {
+    // we "round" percentages
+    return (round(value*100.0))/100.0
+}
+
 let TIP_PERCENTAGES = "TIP_PERCENTAGES"
+let CUSTOM_PERCENT = "CUSTOM_PERCENT"
 let DEFAULT_TIP_PERCENTAGES = [0.18, 0.2, 0.22]
 let PercentFormatter = createFormatter(.PercentStyle)
 let CurrencyFormatter = createFormatter(.CurrencyStyle)

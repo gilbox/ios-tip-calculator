@@ -93,7 +93,32 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <size key="titleShadowOffset" width="2.2250738585072014e-308" height="0.0"/>
                                 <state key="normal" title="¯\_(ツ)_/¯"/>
+                                <connections>
+                                    <segue destination="Tyz-Tf-VsU" kind="modal" id="POr-N8-x6G"/>
+                                </connections>
                             </button>
+                            <view contentMode="scaleToFill" id="Smu-cM-Skh">
+                                <rect key="frame" x="7" y="416" width="306" height="32.5"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="44.5%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="yPO-8q-e9O">
+                                        <rect key="frame" x="0.0" y="-6.5" width="306" height="39"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="fWw-Pm-rTx">
+                                        <rect key="frame" x="226" y="-11" width="48" height="50.5"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="42"/>
+                                        <state key="normal" title="✕"/>
+                                        <connections>
+                                            <action selector="onTouchUpInsideCustomTipCloseButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="U8P-MC-fJw"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
@@ -105,6 +130,9 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="billField" destination="NO7-Su-7bt" id="6aK-u9-6F7"/>
+                        <outlet property="customTipCloseButton" destination="fWw-Pm-rTx" id="sIe-3X-PHi"/>
+                        <outlet property="customTipLabel" destination="yPO-8q-e9O" id="ja1-ug-SVC"/>
+                        <outlet property="customTipView" destination="Smu-cM-Skh" id="KD6-R5-UKo"/>
                         <outlet property="tipControl" destination="1uU-sN-H8N" id="n5E-Yj-09U"/>
                         <outlet property="tipLabel" destination="Cew-rQ-seb" id="4gq-0F-A9S"/>
                         <outlet property="totalLabel" destination="pZ0-KC-SER" id="pJB-YG-DDg"/>
@@ -118,6 +146,79 @@
                 </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="218" y="385"/>
+        </scene>
+        <!--Game View Controller-->
+        <scene sceneID="ua7-dM-BtN">
+            <objects>
+                <viewController id="Tyz-Tf-VsU" customClass="GameViewController" customModule="Tips" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="59Q-Ef-C9K">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Wrn-MC-TKB">
+                                <rect key="frame" x="161" y="352" width="128" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="anger"/>
+                                <connections>
+                                    <action selector="onTouchInsideButton:" destination="Tyz-Tf-VsU" eventType="touchUpInside" id="OlW-Nf-e6B"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="6kY-Lg-Uxc">
+                                <rect key="frame" x="19" y="352" width="131" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="unhappy"/>
+                                <connections>
+                                    <action selector="onTouchInsideButton:" destination="Tyz-Tf-VsU" eventType="touchUpInside" id="bAn-lP-YIA"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="CWw-zb-SSN">
+                                <rect key="frame" x="161" y="178" width="136" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="big_smile"/>
+                                <connections>
+                                    <action selector="onTouchInsideButton:" destination="Tyz-Tf-VsU" eventType="touchUpInside" id="4Lc-cT-jCh"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="d2F-1C-ofe">
+                                <rect key="frame" x="20" y="178" width="130" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="exciting"/>
+                                <connections>
+                                    <action selector="onTouchInsideButton:" destination="Tyz-Tf-VsU" eventType="touchUpInside" id="tEc-eS-SCy"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How was the service?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6jP-Sl-yNi">
+                                <rect key="frame" x="20" y="55" width="269" height="85"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="QIm-dq-X7T">
+                                <rect key="frame" x="0.0" y="20" width="45" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="29"/>
+                                <state key="normal" title="✕">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="onTouchUpInsideClose:" destination="Tyz-Tf-VsU" eventType="touchUpInside" id="PUI-Eq-mQB"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="button0" destination="Wrn-MC-TKB" id="hTx-kg-3XJ"/>
+                        <outlet property="button1" destination="6kY-Lg-Uxc" id="HFI-5b-fzJ"/>
+                        <outlet property="button2" destination="CWw-zb-SSN" id="3Mw-bd-WuI"/>
+                        <outlet property="button3" destination="d2F-1C-ofe" id="8uV-H5-JdB"/>
+                        <outlet property="questionLabel" destination="6jP-Sl-yNi" id="45k-W8-kQe"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="StM-5x-MBS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="218" y="1030"/>
         </scene>
         <!--Settings View Controller-->
         <scene sceneID="o3O-iR-77T">
@@ -202,4 +303,10 @@
             <point key="canvasLocation" x="580" y="385"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="anger" width="128" height="128"/>
+        <image name="big_smile" width="128" height="128"/>
+        <image name="exciting" width="128" height="128"/>
+        <image name="unhappy" width="128" height="128"/>
+    </resources>
 </document>

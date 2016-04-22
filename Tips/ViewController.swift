@@ -15,10 +15,13 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var customTipCloseButton: UIButton!
+    @IBOutlet weak var customTipView: UIView!
     @IBOutlet weak var tipControl: UISegmentedControl!
     @IBOutlet weak var billField: UITextField!
     @IBOutlet weak var tipLabel: UILabel!
     @IBOutlet weak var totalLabel: UILabel!
+    @IBOutlet weak var customTipLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -27,7 +30,7 @@ class ViewController: UIViewController {
 
     override func viewDidAppear(animated: Bool) {
         // we could re-validate tip percentages here but it shouldn't be necessary
-        renderAll()
+        render()
     }
 
     override func didReceiveMemoryWarning() {
@@ -43,12 +46,17 @@ class ViewController: UIViewController {
     @IBAction func onTap(sender: AnyObject) {
         view.endEditing(true)
     }
+
+    @IBAction func onTouchUpInsideCustomTipCloseButton(sender: AnyObject) {
+        setCustomTipPercent(nil)
+        render()
+    }
     
     func validateTipPercentages() {
         let defaults = NSUserDefaults.standardUserDefaults()
         var tipPercentages = defaults.arrayForKey(TIP_PERCENTAGES) as? [Double] ?? []
         
-        if (tipPercentages.count != 3) {
+        if tipPercentages.count != 3 {
             // initialize the default percentages since this is the first time
             // (or somehow the data was corrupted)
             tipPercentages = DEFAULT_TIP_PERCENTAGES
@@ -58,9 +66,19 @@ class ViewController: UIViewController {
     }
     
     func renderBillAmount() {
+        let customPercent = getCustomTipPercent()
+        let showCustomPercent = customPercent != nil
+
+        var tipPercentage:Double
+        
+        if (showCustomPercent) {
+            tipPercentage = customPercent!
+        } else {
+            let tipPercentages = getTipPercentages()
+            tipPercentage = tipPercentages[tipControl.selectedSegmentIndex]
+        }
+        
         let billAmount = DecimalFormatter.numberFromString(billField.text!) as? Double ?? 0.0
-        let tipPercentages = getTipPercentages()
-        let tipPercentage = tipPercentages[tipControl.selectedSegmentIndex]
         let tip = billAmount * tipPercentage
         let total = billAmount + tip
         let tipString = CurrencyFormatter.stringFromNumber(tip)
@@ -71,13 +89,25 @@ class ViewController: UIViewController {
     }
     
     func renderTipPercentages() {
+        let customPercent = getCustomTipPercent()
+        let showCustomPercent = customPercent != nil
+        
+        print("customPercent \(customPercent)")
+
+        customTipView.hidden = !showCustomPercent
+        tipControl.hidden = showCustomPercent
+
+        if (showCustomPercent) {
+            customTipLabel.text = PercentFormatter.stringFromNumber(customPercent!)
+        }
+
         for (index, percent) in getTipPercentages().enumerate() {
             let pct = PercentFormatter.stringFromNumber(percent)
             tipControl.setTitle(pct, forSegmentAtIndex: index)
         }
     }
     
-    func renderAll() {
+    func render() {
         renderTipPercentages()
         renderBillAmount()
     }

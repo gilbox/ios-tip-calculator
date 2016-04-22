@@ -17,6 +17,7 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var percentSlider0: UISlider!
     @IBOutlet weak var percentSlider1: UISlider!
     @IBOutlet weak var percentSlider2: UISlider!
+
     @IBAction func onTouchUpInsideClose(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
@@ -38,11 +39,6 @@ class SettingsViewController: UIViewController {
         setValueForLabel(Double(sender.value), label: label)
         
         setTipPercentages(getNewTipPercentages())
-    }
-    
-    func normalizePercentage(value: Double)-> Double {
-        // we "round" percentages
-        return (round(value*100.0))/100.0
     }
     
     func getNewTipPercentages()-> Array<Double> {

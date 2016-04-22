@@ -4,7 +4,7 @@ TipYall is a tip calculator application for iOS.
 
 Submitted by: Gil Birman
 
-Time spent: 5hrs
+Time spent: 8.5hrs
 
 ## User Stories
 
@@ -21,13 +21,15 @@ The following **optional** features are implemented: (TODO)
 
 The following **additional** features are implemented:
 
-(TODO)
+* Add a `¯\_(ツ)_/¯` button which opens the tipping game
+* Tipping game walks user through series of questions and calculates final tip between low and high settings
+using weighted average based on game score
 
 ## Video Walkthrough 
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/pXC8euX.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='http://i.imgur.com/ftRBCOp.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
@@ -43,6 +45,7 @@ in Swift.
 - I'm reading and writing to and from `NSUserDefaults` all the time to avoid any data
 sync problems. Is there any problem with doing this?
 
+- All the switch statements are bothering me. I almost never use them in JS. Hopefully there's a sleeker way.
 
 ## License
 
