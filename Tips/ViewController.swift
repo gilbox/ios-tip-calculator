@@ -10,11 +10,8 @@ import UIKit
 
 // TODO
 // - Make `defaults` an instance variable ?
-// - Best way of sharing one formatter throughout the app?
 // - Use formatters for all number displays
 
-let TIP_PERCENTAGES = "TIP_PERCENTAGES"
-let formatter = NSNumberFormatter()
 
 class ViewController: UIViewController {
 
@@ -25,22 +22,11 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
-        formatter.numberStyle = .PercentStyle
-        
-        let defaults = NSUserDefaults.standardUserDefaults()
-        var tipPercentages = defaults.arrayForKey(TIP_PERCENTAGES) as? [Double] ?? []
-        
-        if (tipPercentages.count != 3) {
-            // initialize the default percentages since this is the first time
-            tipPercentages = [0.18, 0.2, 0.22]
-            defaults.setObject(tipPercentages, forKey: TIP_PERCENTAGES)
-            defaults.synchronize()
-        }
-        
+        validateTipPercentages()
     }
 
     override func viewDidAppear(animated: Bool) {
+        // we could re-validate tip percentages here but it shouldn't be necessary
         renderAll()
     }
 
@@ -58,10 +44,27 @@ class ViewController: UIViewController {
         view.endEditing(true)
     }
     
+    func validateTipPercentages() {
+        let defaults = NSUserDefaults.standardUserDefaults()
+        var tipPercentages = defaults.arrayForKey(TIP_PERCENTAGES) as? [Double] ?? []
+        
+        if (tipPercentages.count != 3) {
+            // initialize the default percentages since this is the first time
+            // (or somehow the data was corrupted)
+            tipPercentages = DEFAULT_TIP_PERCENTAGES
+            defaults.setObject(tipPercentages, forKey: TIP_PERCENTAGES)
+            defaults.synchronize()
+        }
+    }
+    
+    func getTipPercentages()-> [Double] {
+        let defaults = NSUserDefaults.standardUserDefaults()
+        return defaults.arrayForKey(TIP_PERCENTAGES) as! [Double]
+    }
+    
     func renderBillAmount() {
         let billAmount = NSString(string: billField.text!).doubleValue
-        let defaults = NSUserDefaults.standardUserDefaults()
-        let tipPercentages = defaults.arrayForKey(TIP_PERCENTAGES) as! [Double]
+        let tipPercentages = getTipPercentages()
         let tipPercentage = tipPercentages[tipControl.selectedSegmentIndex]
         let tip = billAmount * tipPercentage
         let total = billAmount + tip
@@ -71,11 +74,8 @@ class ViewController: UIViewController {
     }
     
     func renderTipPercentages() {
-        let defaults = NSUserDefaults.standardUserDefaults()
-        let tipPercentages = defaults.arrayForKey(TIP_PERCENTAGES) as! [Double]
-        
-        for (index, percent) in tipPercentages.enumerate() {
-            let pct = formatter.stringFromNumber(percent)
+        for (index, percent) in getTipPercentages().enumerate() {
+            let pct = percentFormatter.stringFromNumber(percent)
             tipControl.setTitle(pct, forSegmentAtIndex: index)
         }
     }

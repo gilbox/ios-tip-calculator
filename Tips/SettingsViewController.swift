@@ -68,7 +68,7 @@ class SettingsViewController: UIViewController {
     }
     
     func setValueForLabel(value: Double, label: UILabel) {
-        label.text = formatter.stringFromNumber(value)
+        label.text = percentFormatter.stringFromNumber(value)
     }
     
     func setValueForSlider(value: Double, slider: UISlider) {
