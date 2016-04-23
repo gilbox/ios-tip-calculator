@@ -15,9 +15,9 @@ The following **required** functionality is complete:
 
 The following **optional** features are implemented: (TODO)
 * [X] UI animations (in the `¯\_(ツ)_/¯` game)
-* [ ] Remembering the bill amount across app restarts (if <10mins)
+* [X] Remembering the bill amount across app restarts (if <10mins)
 * [X] Using locale-specific currency and currency thousands separators.
-* [ ] Making sure the keyboard is always visible and the bill amount is always the first responder. This way the user doesn't have to tap anywhere to use this app. Just launch the app and start typing.
+* [X] Making sure the keyboard is always visible and the bill amount is always the first responder. This way the user doesn't have to tap anywhere to use this app. Just launch the app and start typing.
 
 The following **additional** features are implemented:
 
@@ -28,6 +28,8 @@ using weighted average based on game score
 ## Video Walkthrough 
 
 Here's a walkthrough of implemented user stories:
+
+TODO: This screenshot does not represent the latest version
 
 <img src='http://i.imgur.com/U8ebsAg.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
@@ -46,6 +48,8 @@ in Swift.
 sync problems. Is there any problem with doing this?
 
 - All the switch statements are bothering me. I almost never use them in JS. Hopefully there's a sleeker way.
+
+- When and how is the best way to unwrap optionals?
 
 ## License
 

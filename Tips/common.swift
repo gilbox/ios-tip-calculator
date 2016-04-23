@@ -8,6 +8,25 @@
 
 import UIKit
 
+func getSavedBillAmount()-> String {
+    let defaults = NSUserDefaults.standardUserDefaults()
+    let now = NSDate().timeIntervalSince1970
+    let timestamp = defaults.doubleForKey(TIME_STAMP)
+
+    if timestamp > 0 && (now - timestamp > SAVE_BILL_AMOUNT_TIMEOUT_MINUTES * 60.0) {
+        return ""
+    }
+    
+    return defaults.stringForKey(BILL_AMOUNT) ?? ""
+}
+
+func setSavedBillAmount(value: String) {
+    let defaults = NSUserDefaults.standardUserDefaults()
+    defaults.setObject(value, forKey: BILL_AMOUNT)
+    defaults.setDouble(NSDate().timeIntervalSince1970, forKey: TIME_STAMP)
+    defaults.synchronize()
+}
+
 func getTipPercentages()-> [Double] {
     let defaults = NSUserDefaults.standardUserDefaults()
     return defaults.arrayForKey(TIP_PERCENTAGES) as! [Double]
@@ -46,6 +65,9 @@ func normalizePercentage(value: Double)-> Double {
     return (round(value*100.0))/100.0
 }
 
+let SAVE_BILL_AMOUNT_TIMEOUT_MINUTES = 10.0
+let TIME_STAMP = "TIME_STAMP"
+let BILL_AMOUNT = "BILL_AMOUNT"
 let TIP_PERCENTAGES = "TIP_PERCENTAGES"
 let CUSTOM_PERCENT = "CUSTOM_PERCENT"
 let DEFAULT_TIP_PERCENTAGES = [0.18, 0.2, 0.22]

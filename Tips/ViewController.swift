@@ -26,11 +26,24 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         validateTipPercentages()
+        
+        let savedBill = getSavedBillAmount()
+        billField.text = savedBill
+        
+        if (savedBill == "") {
+            billField.becomeFirstResponder()
+        }
     }
 
     override func viewDidAppear(animated: Bool) {
         // we could re-validate tip percentages here but it shouldn't be necessary
         render()
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        setSavedBillAmount(billField.text ?? "")
+        print("view did disappear")
     }
 
     override func didReceiveMemoryWarning() {
@@ -40,6 +53,7 @@ class ViewController: UIViewController {
 
     
     @IBAction func handleEditingChanged(sender: AnyObject) {
+        setSavedBillAmount(billField.text ?? "")
         renderBillAmount()
     }
 
@@ -50,6 +64,10 @@ class ViewController: UIViewController {
     @IBAction func onTouchUpInsideCustomTipCloseButton(sender: AnyObject) {
         setCustomTipPercent(nil)
         render()
+    }
+    
+    func getBillAmount()->Double {
+        return DecimalFormatter.numberFromString(billField.text!) as? Double ?? 0.0
     }
     
     func validateTipPercentages() {
@@ -78,7 +96,7 @@ class ViewController: UIViewController {
             tipPercentage = tipPercentages[tipControl.selectedSegmentIndex]
         }
         
-        let billAmount = DecimalFormatter.numberFromString(billField.text!) as? Double ?? 0.0
+        let billAmount = getBillAmount()
         let tip = billAmount * tipPercentage
         let total = billAmount + tip
         let tipString = CurrencyFormatter.stringFromNumber(tip)
