@@ -77,6 +77,7 @@ class GameViewController: UIViewController {
             })
         })
         
+        animateButtonBounce(sender)
         if (sender != button0) {
             animateButtonRight(button0, originalCenter: button0Center, duration: 0.2) }
         if (sender != button1) {
@@ -85,6 +86,17 @@ class GameViewController: UIViewController {
             animateButtonRight(button2, originalCenter: button2Center, duration: 0.3) }
         if (sender != button3) {
             animateButtonLeft(button3, originalCenter: button3Center, duration: 0.35) }
+    }
+    
+    func animateButtonBounce(button: UIButton) {
+        let originalCenter = button.center
+        UIView.animateWithDuration(0.1, animations: {
+            button.center = CGPoint(x: originalCenter.x, y: originalCenter.y - 30)
+        }, completion: { _ in
+            UIView.animateWithDuration(0.5, delay: 0, usingSpringWithDamping:0.2, initialSpringVelocity:0.5, options: .CurveLinear, animations: {
+                button.center = originalCenter
+            }, completion: nil)
+        })
     }
     
     func animateButtonLeft(button: UIButton, originalCenter: CGPoint, duration: Double) {
