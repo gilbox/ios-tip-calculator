@@ -29,9 +29,7 @@ using weighted average based on game score
 
 Here's a walkthrough of implemented user stories:
 
-TODO: This screenshot does not represent the latest version
-
-<img src='http://i.imgur.com/U8ebsAg.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='http://i.imgur.com/vXefFiF.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
