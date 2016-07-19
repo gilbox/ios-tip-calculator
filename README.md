@@ -4,7 +4,7 @@ TipYall is a tip calculator application for iOS.
 
 Submitted by: Gil Birman
 
-Time spent: 8.5hrs
+Time spent: ??
 
 ## User Stories
 
