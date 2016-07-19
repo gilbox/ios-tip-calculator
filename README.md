@@ -13,7 +13,7 @@ The following **required** functionality is complete:
 * [X] User can enter a bill amount, choose a tip percentage, and see the tip and total values.
 * [X] Settings page to change the default tip percentage.
 
-The following **optional** features are implemented: (TODO)
+The following **optional** features are implemented:
 * [X] UI animations (in the `¯\_(ツ)_/¯` game)
 * [X] Remembering the bill amount across app restarts (if <10mins)
 * [X] Using locale-specific currency and currency thousands separators.
