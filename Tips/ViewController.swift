@@ -29,21 +29,17 @@ class ViewController: UIViewController {
         
         let savedBill = getSavedBillAmount()
         billField.text = savedBill
-        
-        if (savedBill == "") {
-            billField.becomeFirstResponder()
-        }
     }
 
     override func viewDidAppear(animated: Bool) {
         // we could re-validate tip percentages here but it shouldn't be necessary
+        billField.becomeFirstResponder()
         render()
     }
     
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
         setSavedBillAmount(billField.text ?? "")
-        print("view did disappear")
     }
 
     override func didReceiveMemoryWarning() {
@@ -52,20 +48,20 @@ class ViewController: UIViewController {
     }
 
     
+    @IBAction func handleTipControlChanged(sender: AnyObject) {
+        if (tipControl.selectedSegmentIndex == 3) {
+            performSegueWithIdentifier("showGame", sender: nil)
+            return
+        }
+        setCustomTipPercent(nil)
+        render()
+    }
+    
     @IBAction func handleEditingChanged(sender: AnyObject) {
         setSavedBillAmount(billField.text ?? "")
         renderBillAmount()
     }
 
-    @IBAction func onTap(sender: AnyObject) {
-        view.endEditing(true)
-    }
-
-    @IBAction func onTouchUpInsideCustomTipCloseButton(sender: AnyObject) {
-        setCustomTipPercent(nil)
-        render()
-    }
-    
     func getBillAmount()->Double {
         return DecimalFormatter.numberFromString(billField.text!) as? Double ?? 0.0
     }
@@ -93,7 +89,11 @@ class ViewController: UIViewController {
             tipPercentage = customPercent!
         } else {
             let tipPercentages = getTipPercentages()
-            tipPercentage = tipPercentages[tipControl.selectedSegmentIndex]
+            if (tipControl.selectedSegmentIndex < 3) {
+                tipPercentage = tipPercentages[tipControl.selectedSegmentIndex]
+            } else {
+                tipPercentage = 0
+            }
         }
         
         let billAmount = getBillAmount()
@@ -110,13 +110,11 @@ class ViewController: UIViewController {
         let customPercent = getCustomTipPercent()
         let showCustomPercent = customPercent != nil
         
-        print("customPercent \(customPercent)")
-
-        customTipView.hidden = !showCustomPercent
-        tipControl.hidden = showCustomPercent
-
         if (showCustomPercent) {
-            customTipLabel.text = PercentFormatter.stringFromNumber(customPercent!)
+            let pct = PercentFormatter.stringFromNumber(customPercent!)
+            tipControl.setTitle(pct, forSegmentAtIndex: 3)
+        } else {
+            tipControl.setTitle("¯\\_(ツ)_/¯", forSegmentAtIndex: 3)
         }
 
         for (index, percent) in getTipPercentages().enumerate() {
